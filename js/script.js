@@ -1,13 +1,25 @@
 // CAMPO MINATO-----------------------------------------------------------------------------------------------------------------------
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
+var bombe = [];
 
+while (bombe.length < 16) {
+  var numeroCasuale100 = numeroCasuale(1, 101);
 
+  var duplicato = controllaSeIlNumeroEsisteGia(numeroCasuale100, bombe);
+  if (duplicato == false) {
+
+    bombe.push(numeroCasuale100);
+  }
+
+}
+
+console.log('array16: ', bombe);
 
 // I numeri non possono essere duplicati.
 
 
 
-// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta,
+// In seguito deve chiedere all’utente di inserire 84 volte un numero (uno alla volta),
 // sempre compreso tra 1 e 100.
 
 
@@ -40,6 +52,32 @@
 
 
 
+//-------------------------------------------------------------------------------------
+// FUNZIONI
+//-------------------------------------------------------------------------------------
+
+function numeroCasuale(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+//-------------------------------------------------------------------------------------
+
+function controllaSeIlNumeroEsisteGia(numero, array) {
+  var ePresente = false;
+  for (var i = 0; i < array.length; i++) {
+
+    if (numero == array[i]) {
+      ePresente = true;
+    }
+  }
+  if (ePresente == true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//-------------------------------------------------------------------------------------
 
 
 
